@@ -1,0 +1,81 @@
+<!-- Фрагмент раздела: settings
+     Этот файл — копия разметки для удобного редактирования в Visual Studio.
+     Рабочая разметка подключена в index.html (id="section-settings").
+     После правок скопируйте содержимое обратно в index.html внутрь section-settings.
+-->
+<section class="section" id="section-settings">
+
+                <h2 class="mb-24">Настройки</h2>
+                <div class="card mb-16">
+                    <h3 class="mb-16">🔔 Напоминания</h3>
+                    <p class="text-muted mb-12" style="font-size:0.9rem;">Привычки, настроение, вода, события календаря, задачи и активность — по всему приложению.</p>
+                    <button class="btn btn-primary" id="openRemindersBtn">Настроить напоминания</button>
+                </div>
+                <div class="card mb-16">
+                    <h3 class="mb-16">Данные пользователя</h3>
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" class="form-control" id="settingUserName" placeholder="Как к вам обращаться">
+                    </div>
+                    <div class="form-group">
+                        <label>Почта</label>
+                        <input type="email" class="form-control" id="settingEmail" placeholder="email@example.com" autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" class="form-control" id="settingPassword" placeholder="Придумайте пароль" autocomplete="new-password">
+                        <small class="text-muted" id="passwordHint" style="display:block;margin-top:6px;">Пароль хранится только на этом устройстве</small>
+                    </div>
+                    <div class="form-group" id="changePasswordBlock" style="display:none;">
+                        <label>Сменить пароль</label>
+                        <input type="password" class="form-control mb-8" id="settingOldPassword" placeholder="Текущий пароль">
+                        <input type="password" class="form-control" id="settingNewPassword" placeholder="Новый пароль">
+                        <button type="button" class="btn btn-secondary btn-sm mt-8" id="changePasswordBtn">Сменить пароль</button>
+                    </div>
+                </div>
+                <div class="card mb-16">
+                    <h3 class="mb-16">Внешний вид</h3>
+                    <div class="form-group">
+                        <label>Тема</label>
+                        <select class="form-control" id="settingTheme">
+                            <option value="light">Светлая</option>
+                            <option value="dark">Тёмная</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Акцентный цвет</label>
+                        <select class="form-control" id="settingAccent">
+                            <option value="default">Зелёный (по умолчанию)</option>
+                            <option value="teal">Бирюзовый</option>
+                            <option value="blue">Синий</option>
+                            <option value="brown">Коричневый</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card mb-16">
+                    <h3 class="mb-16">Предпочтения</h3>
+                    <div class="form-group">
+                        <label>Начало недели</label>
+                        <select class="form-control" id="settingWeekStart">
+                            <option value="1">Понедельник</option>
+                            <option value="0">Воскресенье</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Формат времени</label>
+                        <select class="form-control" id="settingTimeFormat">
+                            <option value="24">24 часа</option>
+                            <option value="12">12 часов</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="settingNotifications">
+                            <span>Уведомления в приложении</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="saveSettingsBtn">Сохранить настройки</button>
+            
+</section>

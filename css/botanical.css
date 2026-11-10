@@ -1,0 +1,306 @@
+/* Life Flow — Botanical decorative layer
+   Plants live on a dedicated layer BEHIND all interactive UI.
+   pointer-events: none, low z-index, soft natural motion.
+*/
+
+/* ---------- Palette ---------- */
+:root {
+    --botanical-sage: #7A8F6A;
+    --botanical-olive: #6B7A4E;
+    --botanical-leaf: #8FA37A;
+    --botanical-stem: #5C6B45;
+    --botanical-dusty-pink: #C9A9A6;
+    --botanical-blush: #D4B5B0;
+    --botanical-soft-green: #A8B89A;
+}
+
+body.theme-dark {
+    --botanical-sage: #8FA37A;
+    --botanical-olive: #A0B08A;
+    --botanical-leaf: #9BB08A;
+    --botanical-stem: #7A8F6A;
+    --botanical-dusty-pink: #B89A97;
+    --botanical-blush: #C4A8A4;
+    --botanical-soft-green: #7A8F6A;
+}
+
+/* ---------- Layer ---------- */
+.botanical-layer {
+    position: fixed;
+    top: 0;
+    left: 260px;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .botanical-layer { left: 0; }
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+}
+
+.section,
+.page-header,
+.dashboard-grid,
+.card,
+.dashboard-card,
+.hero-banner {
+    position: relative;
+    z-index: 1;
+}
+
+.modal-overlay,
+.toast-container,
+.sidebar-overlay {
+    z-index: 1000 !important;
+}
+
+.sidebar {
+    z-index: 100 !important;
+}
+
+/* ---------- Plants base ---------- */
+.plant {
+    position: absolute;
+    opacity: var(--plant-opacity, 0.78);
+    transform-origin: bottom center;
+    will-change: transform;
+    transition: opacity 0.5s ease;
+}
+
+body.theme-dark .plant {
+    opacity: var(--plant-opacity-dark, 0.68);
+}
+
+body.plants-hidden .botanical-layer {
+    display: none !important;
+}
+
+/* Soft animations */
+@keyframes plant-sway {
+    0%, 100% { transform: rotate(-1.6deg) translateY(0); }
+    50%      { transform: rotate(2deg) translateY(-2px); }
+}
+@keyframes plant-sway-alt {
+    0%, 100% { transform: rotate(1.4deg) translateX(0); }
+    50%      { transform: rotate(-1.8deg) translateX(1.5px); }
+}
+@keyframes leaf-flutter {
+    0%, 100% { transform: rotate(-0.7deg); }
+    50%      { transform: rotate(1.2deg); }
+}
+
+.plant--sway      { animation: plant-sway 9s ease-in-out infinite; }
+.plant--sway-slow { animation: plant-sway 13s ease-in-out infinite; }
+.plant--sway-alt  { animation: plant-sway-alt 11s ease-in-out infinite; }
+.plant--flutter   { animation: leaf-flutter 7s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+    .plant--sway,
+    .plant--sway-slow,
+    .plant--sway-alt,
+    .plant--flutter {
+        animation: none !important;
+    }
+}
+
+/* ---------- Positions: dense edges, no empty strip ---------- */
+/* Top-left cluster */
+.plant-1 {
+    top: 12px;
+    left: -6px;
+    width: 95px;
+    height: 140px;
+}
+.plant-2 {
+    top: 8px;
+    right: -4px;
+    width: 88px;
+    height: 120px;
+}
+
+/* Left edge — multiple plants so no empty vertical band */
+.plant-3 {
+    top: 28%;
+    left: -18px;
+    width: 78px;
+    height: 170px;
+}
+.plant-4 {
+    top: 52%;
+    left: -12px;
+    width: 70px;
+    height: 130px;
+}
+.plant-5 {
+    bottom: 8%;
+    left: -8px;
+    width: 110px;
+    height: 100px;
+}
+
+/* Right edge */
+.plant-6 {
+    top: 32%;
+    right: -10px;
+    width: 80px;
+    height: 155px;
+}
+.plant-7 {
+    top: 58%;
+    right: -6px;
+    width: 72px;
+    height: 120px;
+}
+.plant-8 {
+    bottom: 6%;
+    right: -4px;
+    width: 100px;
+    height: 115px;
+}
+
+/* Small accent peeks (corners / mid) */
+.plant-9 {
+    top: 160px;
+    left: 28px;
+    width: 48px;
+    height: 60px;
+    opacity: 0.55;
+}
+.plant-10 {
+    top: 200px;
+    right: 36px;
+    width: 42px;
+    height: 55px;
+    opacity: 0.5;
+}
+.plant-11 {
+    bottom: 180px;
+    left: 40px;
+    width: 50px;
+    height: 65px;
+    opacity: 0.52;
+}
+.plant-12 {
+    bottom: 160px;
+    right: 48px;
+    width: 46px;
+    height: 58px;
+    opacity: 0.5;
+}
+.plant-13 {
+    top: 48%;
+    left: 18px;
+    width: 38px;
+    height: 50px;
+    opacity: 0.45;
+}
+.plant-14 {
+    top: 45%;
+    right: 22px;
+    width: 40px;
+    height: 52px;
+    opacity: 0.45;
+}
+
+/* Extra top/bottom fillers */
+.plant-15 {
+    top: 90px;
+    left: 55px;
+    width: 36px;
+    height: 48px;
+    opacity: 0.4;
+}
+.plant-16 {
+    bottom: 90px;
+    right: 70px;
+    width: 40px;
+    height: 50px;
+    opacity: 0.42;
+}
+
+/* ---------- SVG helpers ---------- */
+.plant svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
+.plant path.stem,
+.plant .stem {
+    fill: none;
+    stroke: var(--botanical-stem);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.plant .leaf       { fill: var(--botanical-leaf); }
+.plant .leaf-dark  { fill: var(--botanical-olive); }
+.plant .leaf-soft  { fill: var(--botanical-soft-green); }
+.plant .flower     { fill: var(--botanical-dusty-pink); }
+.plant .flower-center { fill: var(--botanical-blush); }
+.plant .bud        { fill: var(--botanical-sage); }
+
+.plant .leaf:nth-child(odd)  { opacity: 0.92; }
+.plant .leaf:nth-child(even) { opacity: 0.78; }
+
+/* ---------- Section variation (mild, never sparse) ---------- */
+body[data-section="habits"] .plant-3,
+body[data-section="habits"] .plant-4,
+body[data-section="skills"] .plant-3,
+body[data-section="skills"] .plant-4 {
+    opacity: 0.88;
+}
+
+body[data-section="nutrition"] .plant-5,
+body[data-section="nutrition"] .plant-8,
+body[data-section="fitness"] .plant-5,
+body[data-section="fitness"] .plant-8 {
+    opacity: 0.9;
+}
+
+body[data-section="emotions"] .plant-5,
+body[data-section="emotions"] .plant-8 {
+    opacity: 0.92;
+}
+
+/* Settings: keep plants visible, just a bit softer */
+body[data-section="settings"] .plant {
+    opacity: 0.55;
+}
+body.theme-dark[data-section="settings"] .plant {
+    opacity: 0.5;
+}
+body[data-section="settings"] .plant-9,
+body[data-section="settings"] .plant-10,
+body[data-section="settings"] .plant-11,
+body[data-section="settings"] .plant-12,
+body[data-section="settings"] .plant-13,
+body[data-section="settings"] .plant-14,
+body[data-section="settings"] .plant-15,
+body[data-section="settings"] .plant-16 {
+    opacity: 0.35;
+}
+
+/* ---------- Mobile: fewer plants, tighter ---------- */
+@media (max-width: 600px) {
+    .plant-9, .plant-10, .plant-11, .plant-12,
+    .plant-13, .plant-14, .plant-15, .plant-16 {
+        display: none;
+    }
+    .plant-1 { width: 65px; height: 95px; top: 8px; left: -4px; }
+    .plant-2 { width: 58px; height: 80px; top: 6px; right: -2px; }
+    .plant-3 { width: 55px; height: 110px; left: -14px; }
+    .plant-4 { width: 50px; height: 90px; left: -10px; }
+    .plant-5 { width: 75px; height: 70px; }
+    .plant-6 { width: 55px; height: 100px; right: -8px; }
+    .plant-7 { width: 50px; height: 85px; }
+    .plant-8 { width: 70px; height: 80px; }
+}

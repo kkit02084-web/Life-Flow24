@@ -1,0 +1,62 @@
+/* Life Flow Themes */
+
+/* Light is default in style.css :root */
+
+body.theme-dark {
+    --bg-primary: #0F0F12;
+    --bg-secondary: #1A1A1F;
+    --bg-card: #222228;
+    --text-main: #F0EDE6;
+    --text-secondary: #B8B4AE;
+    --text-muted: #8A8680;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+    --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.55);
+    /* Keep accent soft, not swampy */
+    --green-main: #A8C99A;
+    --green-dark: #C5DDB8;
+    --green-light: #2A3228;
+    --beige: #2C2C32;
+}
+
+/* Accent variants - work in both themes */
+body[data-accent="teal"] {
+    --green-main: #5BA8A0;
+    --green-dark: #3D8A82;
+    --green-light: #D0EBE8;
+}
+body.theme-dark[data-accent="teal"] {
+    --green-main: #7BC4BC;
+    --green-dark: #A0D9D3;
+    --green-light: #1E2E2C;
+}
+
+body[data-accent="blue"] {
+    --green-main: #6B8FBF;
+    --green-dark: #4A6F9F;
+    --green-light: #D6E2F0;
+}
+body.theme-dark[data-accent="blue"] {
+    --green-main: #8AABD4;
+    --green-dark: #A8C4E0;
+    --green-light: #1E2634;
+}
+
+body[data-accent="brown"] {
+    --green-main: #A67C52;
+    --green-dark: #8B6340;
+    --green-light: #F0E6D8;
+}
+body.theme-dark[data-accent="brown"] {
+    --green-main: #C4A07A;
+    --green-dark: #D4B896;
+    --green-light: #2A2420;
+}
+
+/* Hero images by theme */
+body.theme-dark .hero-img-light { opacity: 0; }
+body.theme-dark .hero-img-dark { opacity: 1; }
+body:not(.theme-dark) .hero-img-light { opacity: 1; }
+body:not(.theme-dark) .hero-img-dark { opacity: 0; }
+body.theme-dark .cat-mascot-light { display: none !important; }
+body:not(.theme-dark) .cat-mascot-dark { display: none !important; }

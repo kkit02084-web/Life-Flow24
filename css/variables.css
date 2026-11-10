@@ -1,0 +1,45 @@
+/* Life Flow - Design tokens (botanical natural palette) */
+:root {
+    --bg-primary: #F5F0E6;          /* soft cream / milk */
+    --bg-secondary: #E8E0D0;        /* warm beige */
+    --bg-card: #FFFdf9;             /* almost white with warm tint */
+    --green-main: #647348;          /* sage */
+    --green-dark: #455536;          /* deep olive */
+    --green-light: #D9DDB7;         /* pale sage */
+    --beige: #E8E0D0;
+    --text-main: #36382B;
+    --text-secondary: #5A5C4E;
+    --text-muted: #8A8C7A;
+    --accent: #647348;
+    --border: rgba(100, 115, 72, 0.15);
+    --shadow: 0 4px 20px rgba(54, 56, 43, 0.07);
+    --shadow-hover: 0 8px 28px rgba(54, 56, 43, 0.11);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-lg: 24px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-serif: 'Playfair Display', 'Georgia', serif;
+    --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+    /* Botanical accents */
+    --dusty-pink: #C9A9A6;
+    --soft-olive: #6B7A4E;
+}
+
+body.theme-dark {
+    --bg-primary: #0F0F12;
+    --bg-secondary: #1A1A1F;
+    --bg-card: #222228;
+    --text-main: #F0EDE6;
+    --text-secondary: #B8B4AE;
+    --text-muted: #8A8680;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+    --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.55);
+    --green-main: #A8C99A;
+    --green-dark: #C5DDB8;
+    --green-light: #2A3228;
+    --beige: #2C2C32;
+    --dusty-pink: #B89A97;
+    --soft-olive: #8FA37A;
+}

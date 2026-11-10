@@ -1,0 +1,25 @@
+<!-- Фрагмент раздела: calendar
+     Этот файл — копия разметки для удобного редактирования в Visual Studio.
+     Рабочая разметка подключена в index.html (id="section-calendar").
+     После правок скопируйте содержимое обратно в index.html внутрь section-calendar.
+-->
+<section class="section" id="section-calendar">
+
+                <div class="flex-between mb-24 flex-wrap gap-12">
+                    <div class="flex gap-8">
+                        <button class="btn btn-secondary" id="calPrev">←</button>
+                        <h2 id="calTitle" style="min-width:180px;text-align:center;">Месяц</h2>
+                        <button class="btn btn-secondary" id="calNext">→</button>
+                    </div>
+                    <div class="flex gap-8">
+                        <button class="btn btn-outline btn-sm cal-view-btn active" data-view="month">Месяц</button>
+                        <button class="btn btn-outline btn-sm cal-view-btn" data-view="week">Неделя</button>
+                        <button class="btn btn-outline btn-sm cal-view-btn" data-view="day">День</button>
+                        <button class="btn btn-primary btn-sm" id="addEventBtn">+ Событие</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div id="calendarContainer"></div>
+                </div>
+            
+</section>

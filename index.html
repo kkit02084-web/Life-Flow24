@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <title>Life Flow — Органайзер жизни</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#647348">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/components.css?v=6">
+    <link rel="stylesheet" href="css/sections/books.css">
+    <link rel="stylesheet" href="css/sections/calendar.css">
+    <link rel="stylesheet" href="css/responsive.css?v=6">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/botanical.css">
+    </head>
+<body>
+
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <div class="app-container" id="appRoot">
+        <!-- Botanical decorative layer (behind all functional UI) -->
+        <div class="botanical-layer" aria-hidden="true">
+            <!-- 1 Top-left branch -->
+            <div class="plant plant-1 plant--sway">
+                <svg viewBox="0 0 100 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M48 148 C45 110 40 80 34 50 C30 32 24 16 18 4" stroke-width="2.2"/>
+                    <path class="leaf" d="M34 50 C20 42 10 50 8 64 C18 70 30 62 34 50Z"/>
+                    <path class="leaf-dark" d="M40 72 C26 64 16 74 14 88 C26 94 38 84 40 72Z"/>
+                    <path class="leaf" d="M44 95 C32 88 22 98 20 112 C32 118 42 108 44 95Z"/>
+                    <path class="leaf-soft" d="M28 32 C16 24 8 34 6 46 C16 52 26 42 28 32Z"/>
+                    <path class="leaf" d="M22 16 C12 10 4 18 2 28 C10 32 20 26 22 16Z"/>
+                    <circle class="bud" cx="16" cy="6" r="3.2"/>
+                </svg>
+            </div>
+
+            <!-- 2 Top-right cluster -->
+            <div class="plant plant-2 plant--sway-alt">
+                <svg viewBox="0 0 90 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M42 128 C46 95 52 70 60 42 C64 28 70 14 76 4" stroke-width="2"/>
+                    <path class="leaf" d="M60 42 C74 34 86 44 88 58 C76 64 64 54 60 42Z"/>
+                    <path class="leaf-dark" d="M52 65 C66 56 78 68 80 82 C68 88 54 76 52 65Z"/>
+                    <path class="leaf-soft" d="M46 90 C58 82 70 94 72 108 C60 114 48 102 46 90Z"/>
+                    <path class="leaf" d="M70 18 C80 12 88 20 90 30 C82 34 72 28 70 18Z"/>
+                    <path class="leaf" d="M66 30 C76 24 84 32 86 42 C78 46 68 40 66 30Z"/>
+                </svg>
+            </div>
+
+            <!-- 3 Left mid tall vine -->
+            <div class="plant plant-3 plant--sway-slow">
+                <svg viewBox="0 0 75 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M18 172 C24 135 28 105 34 70 C38 48 44 28 52 6" stroke-width="1.9"/>
+                    <path class="leaf" d="M34 70 C20 62 10 72 8 86 C20 92 32 82 34 70Z"/>
+                    <path class="leaf-dark" d="M38 95 C24 88 14 98 12 112 C24 118 36 108 38 95Z"/>
+                    <path class="leaf-soft" d="M42 50 C28 42 18 52 16 66 C28 72 40 62 42 50Z"/>
+                    <path class="leaf" d="M48 28 C36 20 28 30 26 42 C36 48 46 38 48 28Z"/>
+                    <path class="leaf" d="M28 120 C16 112 6 122 4 136 C16 142 26 132 28 120Z"/>
+                    <path class="leaf-dark" d="M24 145 C14 138 6 148 4 160 C14 166 22 156 24 145Z"/>
+                    <circle class="bud" cx="50" cy="8" r="2.8"/>
+                </svg>
+            </div>
+
+            <!-- 4 Left lower branch -->
+            <div class="plant plant-4 plant--sway">
+                <svg viewBox="0 0 70 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M55 132 C48 100 42 72 36 45 C32 28 26 14 20 4" stroke-width="1.8"/>
+                    <path class="leaf" d="M36 45 C48 38 58 48 60 62 C48 68 38 56 36 45Z"/>
+                    <path class="leaf-dark" d="M42 70 C54 62 64 74 66 88 C54 94 44 82 42 70Z"/>
+                    <path class="leaf-soft" d="M48 95 C58 88 66 98 68 110 C58 116 50 106 48 95Z"/>
+                    <path class="leaf" d="M28 22 C38 16 46 24 48 34 C40 38 30 32 28 22Z"/>
+                    <circle class="bud" cx="18" cy="6" r="2.6"/>
+                    <circle class="bud" cx="24" cy="12" r="2"/>
+                </svg>
+            </div>
+
+            <!-- 5 Bottom-left flowers -->
+            <div class="plant plant-5 plant--sway-alt">
+                <svg viewBox="0 0 120 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M18 98 C32 82 52 68 72 52 C88 42 102 30 114 18" stroke-width="2"/>
+                    <path class="leaf" d="M52 68 C38 60 28 70 26 84 C38 90 50 80 52 68Z"/>
+                    <path class="leaf-dark" d="M72 52 C58 44 48 54 46 68 C58 74 70 64 72 52Z"/>
+                    <path class="leaf-soft" d="M88 40 C76 32 66 42 64 54 C74 60 86 50 88 40Z"/>
+                    <path class="leaf" d="M36 82 C26 74 18 84 16 94 C24 98 34 92 36 82Z"/>
+                    <circle class="flower" cx="114" cy="16" r="7"/>
+                    <circle class="flower-center" cx="114" cy="16" r="3"/>
+                    <circle class="flower" cx="106" cy="10" r="4.5" opacity="0.88"/>
+                    <circle class="flower" cx="118" cy="26" r="4" opacity="0.82"/>
+                    <circle class="bud" cx="98" cy="22" r="2.5"/>
+                </svg>
+            </div>
+
+            <!-- 6 Right mid tall -->
+            <div class="plant plant-6 plant--sway">
+                <svg viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M62 156 C54 120 48 90 42 55 C38 35 32 18 26 6" stroke-width="1.9"/>
+                    <path class="leaf" d="M42 55 C54 46 66 56 68 72 C56 78 44 66 42 55Z"/>
+                    <path class="leaf-dark" d="M48 80 C60 70 72 82 74 96 C62 102 50 90 48 80Z"/>
+                    <path class="leaf-soft" d="M52 105 C64 96 74 108 76 122 C64 128 54 116 52 105Z"/>
+                    <path class="leaf" d="M36 32 C46 24 56 34 58 46 C48 52 38 42 36 32Z"/>
+                    <path class="leaf" d="M30 14 C38 8 46 16 48 26 C40 30 32 22 30 14Z"/>
+                    <circle class="bud" cx="24" cy="6" r="2.8"/>
+                </svg>
+            </div>
+
+            <!-- 7 Right lower -->
+            <div class="plant plant-7 plant--sway-slow">
+                <svg viewBox="0 0 72 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M55 122 C48 92 42 65 36 40 C32 24 26 12 20 4" stroke-width="1.8"/>
+                    <path class="leaf" d="M36 40 C48 32 58 42 60 56 C48 62 38 50 36 40Z"/>
+                    <path class="leaf-dark" d="M42 65 C54 56 64 68 66 82 C54 88 44 76 42 65Z"/>
+                    <path class="leaf-soft" d="M48 90 C58 82 66 92 68 104 C58 110 50 100 48 90Z"/>
+                    <path class="leaf" d="M28 18 C36 12 44 20 46 30 C38 34 30 26 28 18Z"/>
+                </svg>
+            </div>
+
+            <!-- 8 Bottom-right flowers -->
+            <div class="plant plant-8 plant--sway-alt">
+                <svg viewBox="0 0 105 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M52 118 C48 92 44 70 40 48 C36 32 30 16 24 6" stroke-width="1.9"/>
+                    <path class="leaf" d="M40 48 C28 40 18 50 16 64 C28 70 38 60 40 48Z"/>
+                    <path class="leaf-dark" d="M46 72 C34 64 24 74 22 88 C34 94 44 84 46 72Z"/>
+                    <path class="leaf-soft" d="M34 28 C24 20 16 30 14 42 C22 48 32 38 34 28Z"/>
+                    <circle class="flower" cx="24" cy="8" r="7.5"/>
+                    <circle class="flower-center" cx="24" cy="8" r="3.2"/>
+                    <circle class="flower" cx="36" cy="4" r="5" opacity="0.9"/>
+                    <circle class="flower" cx="16" cy="18" r="4.5" opacity="0.85"/>
+                    <circle class="bud" cx="42" cy="14" r="2.8"/>
+                </svg>
+            </div>
+
+            <!-- 9-16 small accent peeks -->
+            <div class="plant plant-9 plant--flutter">
+                <svg viewBox="0 0 50 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M26 63 C24 45 22 30 20 12" stroke-width="1.5"/>
+                    <path class="leaf" d="M20 12 C10 6 2 14 1 26 C10 32 18 22 20 12Z"/>
+                    <path class="leaf-dark" d="M26 28 C16 22 8 30 7 42 C16 48 24 38 26 28Z"/>
+                    <path class="leaf-soft" d="M30 44 C22 38 14 46 13 56 C20 60 28 52 30 44Z"/>
+                </svg>
+            </div>
+            <div class="plant plant-10 plant--flutter">
+                <svg viewBox="0 0 45 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M22 56 C21 40 19 26 17 10" stroke-width="1.4"/>
+                    <path class="leaf" d="M17 10 C9 4 2 12 1 22 C8 26 15 18 17 10Z"/>
+                    <path class="leaf-dark" d="M23 24 C15 18 8 26 7 36 C14 40 21 32 23 24Z"/>
+                </svg>
+            </div>
+            <div class="plant plant-11 plant--sway">
+                <svg viewBox="0 0 52 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M26 68 C24 50 22 35 20 16" stroke-width="1.5"/>
+                    <path class="leaf" d="M20 16 C11 10 3 18 2 30 C11 36 18 26 20 16Z"/>
+                    <path class="leaf-soft" d="M26 32 C17 26 9 34 8 46 C16 52 24 42 26 32Z"/>
+                    <path class="leaf-dark" d="M30 48 C22 42 15 50 14 60 C21 64 28 56 30 48Z"/>
+                    <circle class="bud" cx="18" cy="8" r="2.4"/>
+                </svg>
+            </div>
+            <div class="plant plant-12 plant--sway-alt">
+                <svg viewBox="0 0 48 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M24 60 C23 44 21 30 19 12" stroke-width="1.4"/>
+                    <path class="leaf" d="M19 12 C11 6 4 14 3 24 C10 28 17 20 19 12Z"/>
+                    <path class="leaf-dark" d="M25 26 C17 20 10 28 9 38 C16 42 23 34 25 26Z"/>
+                    <path class="leaf-soft" d="M28 42 C22 36 16 44 15 52 C21 56 26 48 28 42Z"/>
+                </svg>
+            </div>
+            <div class="plant plant-13 plant--flutter">
+                <svg viewBox="0 0 40 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M20 50 C19 36 18 24 16 10" stroke-width="1.3"/>
+                    <path class="leaf" d="M16 10 C9 5 3 12 2 22 C8 26 14 18 16 10Z"/>
+                    <path class="leaf-dark" d="M22 24 C15 18 9 26 8 34 C14 38 20 30 22 24Z"/>
+                </svg>
+            </div>
+            <div class="plant plant-14 plant--flutter">
+                <svg viewBox="0 0 42 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M22 53 C21 38 19 25 17 10" stroke-width="1.3"/>
+                    <path class="leaf" d="M17 10 C10 4 3 12 2 22 C9 26 15 18 17 10Z"/>
+                    <path class="leaf-soft" d="M23 26 C16 20 10 28 9 38 C15 42 21 34 23 26Z"/>
+                </svg>
+            </div>
+            <div class="plant plant-15 plant--sway">
+                <svg viewBox="0 0 38 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M19 48 C18 34 17 22 15 8" stroke-width="1.2"/>
+                    <path class="leaf" d="M15 8 C8 3 2 10 1 18 C7 22 13 14 15 8Z"/>
+                    <path class="leaf-dark" d="M20 22 C14 16 8 24 7 32 C12 36 18 28 20 22Z"/>
+                </svg>
+            </div>
+            <div class="plant plant-16 plant--sway-alt">
+                <svg viewBox="0 0 42 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="stem" d="M21 52 C20 38 18 24 16 10" stroke-width="1.3"/>
+                    <path class="leaf" d="M16 10 C9 4 3 12 2 22 C8 26 14 18 16 10Z"/>
+                    <path class="leaf-soft" d="M22 26 C15 20 9 28 8 38 C14 42 20 34 22 26Z"/>
+                    <circle class="bud" cx="14" cy="6" r="2.2"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"><img src="assets/images/logo.png" alt="Life Flow"></div>
+                    Life Flow
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-section="dashboard">
+                    <span class="icon">🏡</span> Главная
+                </button>
+                <button class="nav-item" data-section="calendar">
+                    <span class="icon">🗓️</span> Календарь
+                </button>
+                <button class="nav-item" data-section="habits">
+                    <span class="icon">🌱</span> Привычки
+                </button>
+                <button class="nav-item" data-section="skills">
+                    <span class="icon">📖</span> Развитие навыков
+                </button>
+                <button class="nav-item" data-section="nutrition">
+                    <span class="icon">🍵</span> Питание
+                </button>
+                <button class="nav-item" data-section="finance">
+                    <span class="icon">🪙</span> Финансы
+                </button>
+                <button class="nav-item" data-section="fitness">
+                    <span class="icon">🚶</span> Спорт
+                </button>
+                <button class="nav-item" data-section="interests">
+                    <span class="icon">🎨</span> Увлечения
+                </button>
+                <button class="nav-item" data-section="planner">
+                    <span class="icon">📝</span> Планировщик дня
+                </button>
+                <button class="nav-item" data-section="notes">
+                    <span class="icon">📒</span> Заметки
+                </button>
+                <button class="nav-item" data-section="library">
+                    <span class="icon">📚</span> Библиотека
+                </button>
+                <button class="nav-item" data-section="emotions">
+                    <span class="icon">💭</span> Эмоции
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="nav-item" data-section="settings">
+                    <span class="icon">🫖</span> Настройки
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                    <h1 id="pageTitle">Главная</h1>
+                    <div class="date" id="currentDate"></div>
+                </div>
+                <div class="header-right">
+                    <span class="greeting" id="greeting">Добро пожаловать!</span>
+                    <button class="btn-icon" id="notificationsBtn" title="Уведомления">🔔</button>
+                </div>
+            </div>
+
+            <!-- DASHBOARD -->
+            <section class="section active" id="section-dashboard">
+                <div class="hero-banner" id="heroBanner">
+                    <img class="hero-img hero-img-light" src="assets/images/hero-light.jpg" alt="Место из сна" style="object-position: center 55%;">
+                    <img class="hero-img hero-img-dark" src="assets/images/hero-dark.jpg" alt="Ночное настроение">
+                    <div class="hero-overlay">
+                        <h2 class="hero-title">Life Flow</h2>
+                        <p class="hero-subtitle" id="heroSubtitle">Мягкие дни, спокойный ритм и маленькие шаги к себе</p>
+                    </div>
+                </div>
+                <div class="dashboard-grid" id="dashboardGrid">
+                    <!-- Cards will be rendered by JS -->
+                </div>
+            </section>
+
+            <!-- CALENDAR -->
+            <section class="section" id="section-calendar">
+                <div class="flex-between mb-24 flex-wrap gap-12">
+                    <div class="flex gap-8">
+                        <button class="btn btn-secondary" id="calPrev">←</button>
+                        <h2 id="calTitle" style="min-width:180px;text-align:center;">Месяц</h2>
+                        <button class="btn btn-secondary" id="calNext">→</button>
+                    </div>
+                    <div class="flex gap-8">
+                        <button class="btn btn-outline btn-sm cal-view-btn active" data-view="month">Месяц</button>
+                        <button class="btn btn-outline btn-sm cal-view-btn" data-view="week">Неделя</button>
+                        <button class="btn btn-outline btn-sm cal-view-btn" data-view="day">День</button>
+                        <button class="btn btn-primary btn-sm" id="addEventBtn">+ Событие</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div id="calendarContainer"></div>
+                </div>
+            </section>
+
+            <!-- HABITS -->
+            <section class="section" id="section-habits">
+                <div class="flex-between mb-24">
+                    <h2>Трекер привычек</h2>
+                    <button class="btn btn-primary" id="addHabitBtn">+ Новая привычка</button>
+                </div>
+                <div id="habitsList"></div>
+                <div class="card mt-24">
+                    <h3 class="mb-16">Календарь привычек</h3>
+                    <div id="habitsCalendar"></div>
+                </div>
+            </section>
+
+            <!-- SKILLS -->
+            <section class="section" id="section-skills">
+                <div class="flex-between mb-24">
+                    <h2>Дерево навыков</h2>
+                    <button class="btn btn-primary" id="addSkillDirectionBtn">+ Направление</button>
+                </div>
+                <div id="skillsDirections" class="dashboard-grid"></div>
+                <div id="skillsTreeView" class="mt-24 hidden"></div>
+            </section>
+
+            <!-- NUTRITION -->
+            <section class="section" id="section-nutrition">
+                <div class="flex gap-8 mb-24 flex-wrap">
+                    <button class="btn btn-primary nutrition-tab active" data-tab="recipes">Рецепты</button>
+                    <button class="btn btn-secondary nutrition-tab" data-tab="menu">Моё меню</button>
+                    <button class="btn btn-secondary nutrition-tab" data-tab="myrecipes">Мои рецепты</button>
+                    <button class="btn btn-secondary nutrition-tab" data-tab="shopping">Список продуктов</button>
+                </div>
+                <div id="nutritionContent"></div>
+            </section>
+
+            <!-- FINANCE -->
+            <section class="section" id="section-finance">
+                <div class="dashboard-grid mb-24" id="financeSummary"></div>
+                <div class="flex gap-8 mb-24 flex-wrap">
+                    <button class="btn btn-primary finance-tab active" data-tab="overview">Обзор</button>
+                    <button class="btn btn-secondary finance-tab" data-tab="income">Доходы</button>
+                    <button class="btn btn-secondary finance-tab" data-tab="expense">Расходы</button>
+                    <button class="btn btn-secondary finance-tab" data-tab="savings">Накопления</button>
+                </div>
+                <div id="financeContent"></div>
+            </section>
+
+            <!-- FITNESS -->
+            <section class="section" id="section-fitness">
+                <div class="flex-between mb-24">
+                    <h2>Спорт и активность</h2>
+                    <button class="btn btn-primary" id="addExerciseBtn">+ Упражнение</button>
+                </div>
+                <div class="flex gap-8 mb-16 flex-wrap" id="fitnessCategories"></div>
+                <div id="fitnessList" class="dashboard-grid"></div>
+            </section>
+
+            <!-- INTERESTS -->
+            <section class="section" id="section-interests">
+                <div class="flex-between mb-24">
+                    <h2>Увлечения и интересы</h2>
+                </div>
+                <div class="card mb-24">
+                    <h3 class="mb-16">Выберите интересы</h3>
+                    <div id="interestsSelector" class="flex flex-wrap gap-8"></div>
+                </div>
+                <h3 class="mb-16">Рекомендации</h3>
+                <div id="recommendationsList" class="dashboard-grid"></div>
+            </section>
+
+            <!-- PLANNER -->
+            <section class="section" id="section-planner">
+                <div class="flex-between mb-24 flex-wrap gap-12">
+                    <div class="flex gap-8 align-center">
+                        <input type="date" class="form-control" id="plannerDate" style="width:auto;">
+                        <button class="btn btn-secondary btn-sm" id="plannerToday">Сегодня</button>
+                    </div>
+                    <div class="flex gap-8">
+                        <button class="btn btn-outline btn-sm" id="applyTemplateBtn">Шаблон</button>
+                        <button class="btn btn-primary btn-sm" id="addPlanItemBtn">+ Занятие</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div id="plannerTimeline"></div>
+                </div>
+            </section>
+
+            <!-- NOTES -->
+            <section class="section" id="section-notes">
+                <div class="flex-between mb-24 flex-wrap gap-12">
+                    <input type="search" class="form-control" id="notesSearch" placeholder="Поиск заметок..." style="max-width:280px;">
+                    <button class="btn btn-primary" id="addNoteBtn">+ Заметка</button>
+                </div>
+                <div class="flex gap-8 mb-16 flex-wrap" id="notesCategories"></div>
+                <div id="notesList"></div>
+            </section>
+
+            
+            
+            <!-- LIBRARY -->
+            <section class="section" id="section-library">
+                <div class="flex gap-8 mb-16 flex-wrap" id="libraryTabs">
+                    <button class="btn btn-primary library-tab active" data-lib-tab="catalog">Каталог</button>
+                    <button class="btn btn-secondary library-tab" data-lib-tab="mine">Моя библиотека</button>
+                </div>
+                <div id="libraryContent"></div>
+            </section>
+
+            <!-- EMOTIONS -->
+            <section class="section" id="section-emotions">
+                <div class="flex-between mb-24 flex-wrap gap-12">
+                    <h2>Эмоции и настроение</h2>
+                    <button class="btn btn-primary btn-sm" id="emotionRemindBtn" onclick="Reminders.showSettings()">🔔 Напоминания</button>
+                </div>
+                <div id="emotionsContent"></div>
+            </section>
+
+            <!-- ADMIN -->
+            <section class="section" id="section-admin">
+                <div id="adminContent"></div>
+            </section>
+
+            <!-- SETTINGS -->
+            <section class="section" id="section-settings">
+                <h2 class="mb-24">Настройки</h2>
+
+                <div class="card mb-16" id="cloudAccountCard">
+                    <h3 class="mb-16">Данные пользователя</h3>
+                    <div class="form-group">
+                        <label>Имя</label>
+                        <input type="text" class="form-control" id="settingUserName" placeholder="Как к вам обращаться">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" id="settingAccountEmail" readonly placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="password" class="form-control" id="settingAccountPassword" readonly value="" placeholder="••••••••" autocomplete="off">
+                        <small class="text-muted" style="display:block;margin-top:6px;">Пароль скрыт точками. Хранится в защищённом виде.</small>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-secondary btn-sm" id="changePassOpenBtn">Сменить пароль</button>
+                    </div>
+                    <div id="changePassPanel" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+                        <div class="form-group"><label>Текущий пароль</label><input type="password" class="form-control" id="changePassOld" placeholder="••••••••"></div>
+                        <div class="form-group"><label>Новый пароль</label><input type="password" class="form-control" id="changePassNew" placeholder="••••••••"></div>
+                        <div class="form-group"><label>Повторите новый пароль</label><input type="password" class="form-control" id="changePassNew2" placeholder="••••••••"></div>
+                        <div class="flex gap-8 flex-wrap">
+                            <button type="button" class="btn btn-primary btn-sm" id="changePassConfirmBtn">Подтвердить смену пароля</button>
+                            <button type="button" class="btn btn-outline btn-sm" id="changePassCancelBtn">Отмена</button>
+                        </div>
+                    </div>
+                    <div id="cloudAuthLoggedIn" style="margin-top:16px;">
+                        <div class="flex gap-8 flex-wrap">
+                            <button type="button" class="btn btn-secondary btn-sm" id="cloudSyncNowBtn">Синхронизировать сейчас</button>
+                            <button type="button" class="btn btn-outline btn-sm" id="cloudSignOutBtn">Выйти из аккаунта</button>
+                        </div>
+                    </div>
+                    <p class="text-muted mt-12" style="font-size:0.85rem;" id="syncStatusText">Проверка…</p>
+                </div>
+
+                <div class="card mb-16">
+                    <h3 class="mb-16">🔔 Напоминания</h3>
+                    <p class="text-muted mb-12" style="font-size:0.9rem;">Привычки, настроение, вода, события календаря, задачи и активность — по всему приложению.</p>
+                    <button class="btn btn-primary" id="openRemindersBtn">Настроить напоминания</button>
+                </div>
+
+                <div class="card mb-16">
+                    <h3 class="mb-16">Внешний вид</h3>
+                    <div class="form-group">
+                        <label>Тема</label>
+                        <select class="form-control" id="settingTheme">
+                            <option value="light">Светлая</option>
+                            <option value="dark">Тёмная</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Акцентный цвет</label>
+                        <select class="form-control" id="settingAccent">
+                            <option value="default">Зелёный (по умолчанию)</option>
+                            <option value="teal">Бирюзовый</option>
+                            <option value="blue">Синий</option>
+                            <option value="brown">Коричневый</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="card mb-16">
+                    <h3 class="mb-16">Предпочтения</h3>
+                    <div class="form-group">
+                        <label>Начало недели</label>
+                        <select class="form-control" id="settingWeekStart">
+                            <option value="1">Понедельник</option>
+                            <option value="0">Воскресенье</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Формат времени</label>
+                        <select class="form-control" id="settingTimeFormat">
+                            <option value="24">24 часа</option>
+                            <option value="12">12 часов</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="settingNotifications">
+                            <span>Уведомления в приложении</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="card mb-16" id="memoryOfflineCard">
+                    <h3 class="mb-16">☁️ Облако и память</h3>
+                    <div id="memoryStats" class="text-muted mb-12" style="font-size:0.9rem;">Загрузка…</div>
+                    <div class="flex gap-8 flex-wrap">
+                        <button type="button" class="btn btn-secondary btn-sm" id="memoryRefreshBtn">Обновить</button>
+                        <button type="button" class="btn btn-outline btn-sm" id="memoryClearCacheBtn">Очистить временный кэш</button>
+                    </div>
+                    <p class="text-muted mt-12" style="font-size:0.8rem;">Очистка кэша не удаляет личные данные и очередь несинхронизированных изменений.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modalContent">
+            <!-- Dynamic content -->
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    
+<script>
+// Clear stale SW caches that broke mobile deploys
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(rs){
+    rs.forEach(function(r){ r.unregister(); });
+  });
+  if (window.caches && caches.keys) {
+    caches.keys().then(function(keys){ keys.forEach(function(k){ caches.delete(k); }); });
+  }
+}
+</script>
+
+    <!-- Scripts -->
+    <!-- Core -->
+    <script src="js/core/idb.js"></script>
+    <script src="js/core/supabase-config.js"></script>
+    <script src="js/core/storage.js"></script>
+    <script src="js/core/cloud.js"></script>
+    <script src="js/core/offline-assets.js"></script>
+    <script src="js/core/loader.js"></script>
+    <script src="js/core/app.js?v=6"></script>
+    <!-- Modules -->
+    <script src="js/modules/calendar.js"></script>
+    <script src="js/modules/habits.js"></script>
+    <script src="js/modules/skills.js"></script>
+    <script src="js/modules/nutrition.js"></script>
+    <script src="js/modules/finance.js"></script>
+    <script src="js/modules/fitness.js"></script>
+    <script src="js/modules/interests.js"></script>
+    <script src="js/modules/planner.js"></script>
+    <script src="js/modules/notes.js"></script>
+    <!-- Features -->
+    <script src="js/features/library.js"></script>
+    <script src="js/features/library-reader.js"></script>
+    <script src="js/features/emotions.js"></script>
+    <script src="js/features/settings.js"></script>
+    <script src="js/features/admin.js"></script>
+    <script src="js/features/reminders.js"></script>
+</body>
+</html>

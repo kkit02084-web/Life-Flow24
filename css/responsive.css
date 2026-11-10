@@ -1,0 +1,478 @@
+/* Life Flow - Full Mobile Responsive Styles */
+
+/* Base: prevent horizontal scroll */
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+img, video, canvas, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 220px;
+    }
+    .main-content {
+        margin-left: 220px;
+        padding: 20px;
+    }
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+    }
+    .chart-container {
+        flex-direction: column;
+    }
+}
+
+/* Mobile (phones) */
+@media (max-width: 768px) {
+    /* Sidebar as drawer */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(300px, 85vw);
+        max-width: 100%;
+        transform: translateX(-105%);
+        transition: transform 0.3s ease;
+        z-index: 200;
+        box-shadow: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 8px 0 32px rgba(0,0,0,0.2);
+    }
+
+    .sidebar-overlay {
+        display: none !important;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 150;
+        pointer-events: none;
+    }
+    .sidebar-overlay.active {
+        display: block !important;
+        pointer-events: auto;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        width: 100%;
+        max-width: 100vw;
+        padding: 12px 14px 80px;
+        box-sizing: border-box;
+    }
+
+    /* Header */
+    .top-bar,
+    .page-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 8px 0 12px;
+        align-items: center;
+    }
+    .mobile-menu-btn {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        font-size: 1.3rem;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    .page-header h1,
+    #pageTitle {
+        font-size: 1.25rem !important;
+        line-height: 1.3;
+        flex: 1;
+        min-width: 0;
+    }
+    .header-right {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #currentDate, #greeting {
+        font-size: 0.85rem;
+    }
+
+    /* Hero */
+    .hero-banner {
+        height: 150px !important;
+        border-radius: 16px !important;
+        margin-bottom: 16px;
+    }
+    .hero-title { font-size: 1.25rem !important; }
+    .hero-subtitle { font-size: 0.8rem !important; }
+    .hero-overlay { padding: 12px 14px !important; }
+
+    /* Grids → single column */
+    .dashboard-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+    .modules-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px;
+    }
+    .module-tile {
+        padding: 12px 6px !important;
+    }
+    .module-icon { font-size: 1.3rem !important; }
+    .module-label { font-size: 0.7rem !important; }
+
+    /* Cards */
+    .card, .dashboard-card, .ghibli-block {
+        padding: 14px !important;
+        border-radius: 14px;
+    }
+    .dashboard-card .stat {
+        font-size: 1.4rem !important;
+    }
+    .card-icon {
+        font-size: 1.5rem;
+    }
+
+    /* Typography */
+    h1 { font-size: 1.4rem !important; }
+    h2 { font-size: 1.2rem !important; }
+    h3 { font-size: 1.05rem !important; }
+
+    /* Buttons - touch friendly */
+    .btn {
+        min-height: 44px;
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+    }
+    .btn-sm {
+        min-height: 36px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    .btn-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
+    .flex-between {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .flex.gap-8, .flex.gap-12, .flex.gap-16 {
+        flex-wrap: wrap;
+    }
+
+    /* Forms */
+    .form-control,
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"],
+    input[type="search"],
+    select,
+    textarea {
+        font-size: 16px !important; /* prevents iOS zoom */
+        min-height: 44px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    textarea.form-control {
+        min-height: 80px;
+    }
+    .form-group {
+        margin-bottom: 12px;
+    }
+
+    /* Modal full-ish on mobile */
+    .modal-overlay {
+        padding: 0 !important;
+        align-items: flex-end !important;
+    }
+    .modal,
+    #modalContent {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 92vh !important;
+        border-radius: 20px 20px 0 0 !important;
+        padding: 20px 16px 28px !important;
+        margin: 0 !important;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .modal-header {
+        position: sticky;
+        top: 0;
+        background: var(--bg-card);
+        z-index: 2;
+        padding-bottom: 8px;
+    }
+    .modal-footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        position: sticky;
+        bottom: 0;
+        background: var(--bg-card);
+        padding-top: 12px;
+    }
+    .modal-footer .btn {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    /* Calendar */
+    .calendar-grid {
+        font-size: 0.75rem !important;
+        gap: 2px !important;
+    }
+    .calendar-day {
+        min-height: 40px;
+        padding: 4px !important;
+    }
+
+    /* Charts */
+    .chart-container {
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+    .chart-box {
+        min-width: 100% !important;
+        width: 100%;
+    }
+    .bar-chart {
+        height: 110px !important;
+    }
+    .pie-chart {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Mood */
+    .mood-pick-row {
+        justify-content: space-between;
+        gap: 6px;
+    }
+    .mood-pick-btn {
+        flex: 1;
+        min-width: 56px;
+        padding: 10px 6px !important;
+    }
+    .mood-pick-btn span {
+        font-size: 1.5rem !important;
+    }
+    .mood-row {
+        justify-content: space-between;
+    }
+    .mood-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    /* Goals row */
+    .goals-row {
+        justify-content: center;
+        gap: 10px;
+    }
+    .goal-circle {
+        width: 64px;
+    }
+
+    /* Tabs */
+    .finance-tab,
+    .nutrition-tab,
+    [class*="-tab"] {
+        flex: 1;
+        text-align: center;
+        font-size: 0.8rem;
+        padding: 10px 8px;
+        white-space: nowrap;
+    }
+    .flex.gap-8.mb-16,
+    .tabs-row {
+        overflow-x: auto;
+        flex-wrap: nowrap !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+    }
+
+    /* Lists */
+    .list-item {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px !important;
+    }
+
+    /* Tables */
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        font-size: 0.8rem;
+    }
+
+    /* Toast */
+    .toast-container {
+        left: 12px !important;
+        right: 12px !important;
+        bottom: 16px !important;
+        width: auto !important;
+    }
+    .toast {
+        max-width: 100% !important;
+        font-size: 0.9rem;
+    }
+
+    /* Nav items larger touch targets */
+    .nav-item {
+        padding: 14px 18px !important;
+        min-height: 48px;
+        font-size: 0.95rem;
+    }
+
+    /* Logo */
+    .logo {
+        padding: 16px !important;
+    }
+
+    /* Time display */
+    .time-display {
+        font-size: 1.8rem !important;
+    }
+
+    /* Quote / reminder */
+    .ghibli-quote,
+    .ghibli-reminder {
+        font-size: 0.9rem !important;
+        padding: 12px 14px !important;
+    }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+    .main-content {
+        padding: 10px 10px 70px;
+    }
+    .modules-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    .mood-pick-btn small {
+        font-size: 0.65rem;
+    }
+    .btn {
+        font-size: 0.85rem;
+    }
+    .hero-banner {
+        height: 130px !important;
+    }
+}
+
+/* Landscape phones */
+@media (max-width: 896px) and (orientation: landscape) {
+    .sidebar {
+        width: min(260px, 70vw);
+    }
+    .hero-banner {
+        height: 120px !important;
+    }
+    .modal, #modalContent {
+        max-height: 88vh !important;
+        border-radius: 16px !important;
+    }
+    .modal-overlay {
+        align-items: center !important;
+        padding: 12px !important;
+    }
+}
+
+/* Safe area for notched phones */
+@supports (padding: max(0px)) {
+    @media (max-width: 768px) {
+        .main-content {
+            padding-left: max(14px, env(safe-area-inset-left));
+            padding-right: max(14px, env(safe-area-inset-right));
+            padding-bottom: max(80px, env(safe-area-inset-bottom));
+        }
+        .sidebar {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .toast-container {
+            bottom: max(16px, env(safe-area-inset-bottom)) !important;
+        }
+    }
+}
+
+
+/* Emotions mobile */
+@media (max-width: 768px) {
+    .mood-pick-row {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+    .mood-pick-btn {
+        width: 100%;
+        min-width: 0;
+        padding: 10px 4px !important;
+    }
+    .mood-pick-btn .mood-emoji,
+    .mood-pick-btn span {
+        font-size: 1.4rem !important;
+    }
+    .mood-pick-btn small {
+        font-size: 0.65rem;
+        line-height: 1.1;
+    }
+    .mood-cal-day {
+        min-height: 36px;
+        border-radius: 8px;
+    }
+    .mood-cal-emoji {
+        font-size: 0.85rem;
+    }
+    .mood-cal-num {
+        font-size: 0.65rem;
+    }
+    .mood-cal-legend {
+        gap: 6px 10px;
+        font-size: 0.75rem;
+    }
+    .emotion-history-item {
+        padding: 10px 0 !important;
+    }
+    .pie-chart {
+        width: 110px !important;
+        height: 110px !important;
+        margin: 0 auto 12px;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .lib-table { font-size: 0.8rem; }
+    .lib-table th, .lib-table td { padding: 8px 6px; }
+    .lib-cover-lg { width: 90px; height: 120px; }
+    .lib-cat-chip { font-size: 0.8rem; padding: 6px 12px; }
+}
